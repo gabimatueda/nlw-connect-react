@@ -1,11 +1,13 @@
 import Image from 'next/image';
-import { ArrowRight, Mail, Radio, User } from 'lucide-react';
-import logo from '../assets/logo.svg';
-import { InputField, InputIcon, InputRoot } from '@/components/input';
+import { Radio } from 'lucide-react';
+import logo from '../../assets/logo.svg';
+import { InviteLinkInput } from '../invite/invite-link-input';
+import { Stats } from '../invite/stats';
 
 export default function Home() {
+  const inviteLink = "http://localhost:3000/invite"
+
   return (
-    <main className="max-w-[1240px] mx-auto px-5 py-8 md:py-0">
       <div className="min-h-dvh flex flex-col justify-center gap-16">
         <div className="flex flex-col gap-8 items-center md:items-start">
           <Image src={logo} alt="devstage" width={108.5} height={30}/>
@@ -35,34 +37,11 @@ export default function Home() {
               <br />
           </p>
         </div>
-        <form className="w-full bg-gray-700 border border-gray-600 rounded-2xl p-8 space-y-6 md:max-w-[440px]">
-          <h2 className="font-heading font-semibold text-gray-200 text-xl">
-            Inscrição
-          </h2>
 
-          <div className="space-y-3">
-            <InputRoot>
-             <InputIcon>
-              <User/>
-            </InputIcon>
-            <InputField type="text" placeholder="Nome completo"/>
-            </InputRoot>
+        <InviteLinkInput inviteLink={inviteLink} />
 
-            <InputRoot>
-             <InputIcon>
-              <Mail/>
-            </InputIcon>
-            <InputField type="email" placeholder="E-mail"/>
-            </InputRoot>
-          </div>
-
-          <button type="submit">
-            Confirmar
-            <ArrowRight />
-          </button>
-        </form>
+        <Stats />
         </div>
       </div>
-    </main>
   );
 }
